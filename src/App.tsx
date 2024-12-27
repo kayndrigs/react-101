@@ -38,4 +38,4 @@ const UserCard = (props: UserCardProps) => {
       <p>{props.email}</p>
     </div>
   );
-};
+}; 
