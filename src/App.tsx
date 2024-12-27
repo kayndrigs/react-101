@@ -1,41 +1,48 @@
-import { useState } from "react";
-
-type User = {
-  id: string;
-  name: string;
-  email: string;
-}
-
-const DEFAULT_USERS = [
-  { id: "1", name:"Kayne", email: "kayne.rodrigo11@gmail.com"},
-  { id: "2", name:"Kayne2", email: "kayne.rodrigo11@gmail.com"},
-  { id: "3", name:"Kayne3", email: "kayne.rodrigo11@gmail.com"}
-];
-
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const [users] = useState<User[]>(DEFAULT_USERS);
+  const [isShow, setIsShow] = useState(false);
+
+  const handleClick = () => {
+    setIsShow(!isShow);
+  };
+
 
   return (
     <div>
-      <h1>Users List</h1>
-      <div className="flex flex-col gap-4">
-        {users.map((user) => (
-          <UserCard key={user.id} id={user.id} name={user.name} email={user.email} />
-        ))}
-      </div>
+      {/* ternary operator */}
+      <button onClick={handleClick}>
+        {isShow ? "Click to Hide Text" : "Click to Show Text"}
+      </button>
+      {isShow ? <HideText/> : <ShowText/> }
     </div>
     );  
 }
 
-type UserCardProps = User;
 
-const UserCard = (props: UserCardProps) => {
-  return (
-    <div className = "flex flex-col gap-2 p-4 bg-gray-200 rounded-md max-w-sm">
-      <p>{props.id}</p>
-      <h2>{props.name}</h2>
-      <p>{props.email}</p>
-    </div>
-  );
+function HideText() {
+  /** Pag gumana yung useEffect hook, meaning nasa mounted state */
+  useEffect(() => {
+    console.log("Hide Text is Mounted");
+    
+  /** Unmounting */
+    return () => {
+        console.log("Hide Text is Unmounted")
+    };
+    
+  }, []);
+  return <p>Hide Text</p>
 };
+
+
+function ShowText() {
+  useEffect(() => {
+    console.log("Show Text is Mounted");
+      /** Unmounting */
+    return () => {
+      console.log("Show Text is Unmounted")
+    };
+  }, []);
+
+  return <p>Show Text</p>
+}
