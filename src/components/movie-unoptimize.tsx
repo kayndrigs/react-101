@@ -3,11 +3,10 @@
 import { useState } from "react";
 
 const calculateMovieScore = (rating: number, reviews: number) => {
-    console.log("🎬Calculating moview score");
+    console.log("🔃Calculating moview score");
 
-    for (let i = 0; i<1000000; i++ ) {
-        return (rating * reviews) / 10;
-    }
+    for (let i = 0; i<1000000000; i++ ) {}
+    return (rating * reviews) / 10;
 };
 
 const Movie = ({
@@ -19,7 +18,7 @@ const Movie = ({
         rating: number; 
         onLike: ()=> void;
     }) => {
-    console.log("Rendering Movie: ", title); // Shows when component rerenders
+    console.log("🎬Rendering Movie: ", title); // Shows when component rerenders
 
     return (
         <div style={{ border: "1px solid gray", padding: "10px", margin:"10px"}}>
