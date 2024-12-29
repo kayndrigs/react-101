@@ -1,7 +1,7 @@
-import { UnoptimizedMovieApp } from "./components/movie-unoptimize";
+import { Fruits } from "./components/fruits";
 
 export default function App() {
   return(
-    <UnoptimizedMovieApp />
+    <Fruits />
   );
 }
